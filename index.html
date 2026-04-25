@@ -36,7 +36,9 @@
         // 模擬 Lucide 圖示組件
         const Icon = ({ name, className }) => {
             useEffect(() => {
-                lucide.createIcons();
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
             }, [name]);
             return <i data-lucide={name} className={className}></i>;
         };
@@ -248,7 +250,12 @@
                                 </div>
                             </section>
                             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                                <button className="flex-1 py-5 bg-white text-blue-950 rounded-2xl font-bold tracking-[0.2em] shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all">立即體驗這份能量</button>
+                                <button 
+                                    onClick={() => window.open('https://www.show-hair.com/bpw08.php', '_blank')}
+                                    className="flex-1 py-5 bg-white text-blue-950 rounded-2xl font-bold tracking-[0.2em] shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all"
+                                >
+                                    立即體驗這份能量
+                                </button>
                                 <button onClick={() => setView('quiz')} className="px-8 py-5 border border-white/20 rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center gap-2 text-white">
                                     <Icon name="rotate-ccw" className="w-5 h-5 text-blue-300" />
                                     <span className="text-sm tracking-widest uppercase">重新測量</span>
